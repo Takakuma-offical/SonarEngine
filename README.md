@@ -14,6 +14,16 @@ Most features are separated by responsibility, resulting in a clear and modular 
 
 To fully understand how SonarEngine works, it is recommended to not only read the documentation, but also explore the `SampleGameObject` and `SampleComponent` included in the Project, as well as the source code of the GameEngine itself.
 
+## Development Status & Contributions
+
+SonarEngine is currently under active development, and not all features are guaranteed to work fully at this stage.
+
+We are also welcoming proposals for additional features as a game engine.
+If you have ideas for new functionality, such as Java-based system Components or other engine-related features, please submit them as **Add-ons** via the GitHub Project Issues.
+
+When a submitted Add-on or feature proposal is adopted into the engine, the contributor will be credited as a **SonarEngine contributor** in this README.
+
+
 ## License
 
 SonarEngine is released under the **GNU General Public License (GPL)**.
