@@ -1,46 +1,23 @@
 package Engine.Core;
 
-import Engine.windows.EngineCanvas;
+import javax.swing.Timer;
 
-public class GameLoop implements Runnable {
+public class GameLoop {
 
-    private static final int TARGET_FPS = 60;
-    private static final double FRAME_TIME = 1.0 / TARGET_FPS;
+    private static final int FPS = 60;
 
-    private boolean running = true;
-    private final EngineCanvas canvas;
+    public static void start() {
+        int delay = 1000 / FPS;
 
-    public GameLoop(EngineCanvas canvas) {
-        this.canvas = canvas;
+        new Timer(delay, e -> {
+            update();
+            EngineCanvas.repaintCanvas();
+        }).start();
     }
 
-    @Override
-    public void run() {
-        long lastTime = System.nanoTime();
-
-        while (running) {
-            long now = System.nanoTime();
-            double deltaTime = (now - lastTime) / 1_000_000_000.0;
-            lastTime = now;
-
-            // Update
-            Engine_goAdmin.updateAll(deltaTime);
-
-            // Render
-            canvas.repaint();
-
-            // FPS制御
-            try {
-                Thread.sleep(
-                        Math.max(0,
-                                (long) ((FRAME_TIME - deltaTime) * 1000))
-                );
-            } catch (InterruptedException ignored) {
-            }
+    private static void update() {
+        for (GameObject obj : Engine_goAdmin.getAll()) {
+            obj.update();
         }
-    }
-
-    public void stop() {
-        running = false;
     }
 }

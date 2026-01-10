@@ -3,27 +3,21 @@ package Engine.Core;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface GameObject {
+public class GameObject {
 
-    // 実装クラス側で保持
-    List<Component> getComponents();
+    public final Transform transform = new Transform();
+    private final List<Component> components = new ArrayList<>();
 
-    default void onCreate() {
+    public void addComponent(Component c) {
+        c.attach(this);
+        components.add(c);
     }
 
-    default <T extends Component> T addComponent(T component) {
-        component.setGameObject(this);
-        getComponents().add(component);
-        component.onCreate();
-        return component;
+    public void update() {
+        for (Component c : components) c.update();
     }
 
-    default <T extends Component> T getComponent(Class<T> type) {
-        for (Component c : getComponents()) {
-            if (type.isInstance(c)) {
-                return type.cast(c);
-            }
-        }
-        return null;
+    public void render(java.awt.Graphics2D g) {
+        for (Component c : components) c.render(g);
     }
 }

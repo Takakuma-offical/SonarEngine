@@ -1,5 +1,6 @@
 package Engine.windows;
 
+import Engine.Core.EngineCanvas;
 import Engine.Core.Window;
 import Engine.Core.WindowConfig;
 
@@ -8,7 +9,7 @@ import javax.swing.JFrame;
 public class WindowsWindowFunction implements Window {
 
     private JFrame frame;
-    private EngineCanvas canvas;   // ← ★これが必要
+    private EngineCanvas canvas;
     private final WindowConfig config;
 
     public WindowsWindowFunction(WindowConfig config) {
@@ -23,8 +24,8 @@ public class WindowsWindowFunction implements Window {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
-        canvas = new EngineCanvas();     // ← ★生成
-        frame.add(canvas);               // ← ★追加
+        canvas = new EngineCanvas();
+        frame.add(canvas);
     }
 
     @Override
@@ -35,10 +36,5 @@ public class WindowsWindowFunction implements Window {
     @Override
     public void close() {
         frame.dispose();
-    }
-
-    // ★ getter
-    public EngineCanvas getCanvas() {
-        return canvas;
     }
 }

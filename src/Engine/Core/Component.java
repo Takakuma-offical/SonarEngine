@@ -1,21 +1,14 @@
 package Engine.Core;
 
 public abstract class Component {
+    protected GameObject gameObject;
+    protected Transform transform;
 
-    private GameObject gameObject;
-
-    void setGameObject(GameObject gameObject) {
-        this.gameObject = gameObject;
+    void attach(GameObject obj) {
+        this.gameObject = obj;
+        this.transform = obj.transform;
     }
 
-    public GameObject getGameObject() {
-        return gameObject;
-    }
-
-    public void onCreate() {
-    }
-
-    // ★ 追加
-    public void onUpdate(double deltaTime) {
-    }
+    public void update() {}
+    public void render(java.awt.Graphics2D g) {}
 }

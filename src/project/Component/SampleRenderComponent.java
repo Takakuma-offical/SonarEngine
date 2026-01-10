@@ -1,15 +1,14 @@
 package project.Component;
 
-import Engine.Core.RenderComponent;
-import Engine.Graphics.RenderContext;
-
+import Engine.Core.Component;
 import java.awt.Color;
+import java.awt.Graphics2D;
 
-public class SampleRenderComponent extends RenderComponent {
+public class SampleRenderComponent extends Component {
 
     @Override
-    public void onRender(RenderContext ctx) {
-        ctx.getGraphics().setColor(Color.RED);
-        ctx.getGraphics().fillRect(50, 50, 100, 100);
+    public void render(Graphics2D g) {
+        g.setColor(Color.RED);
+        g.fillRect((int)transform.x, (int)transform.y, 50, 50);
     }
 }
