@@ -7,5 +7,5 @@ currently being supported with security updates.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| P0001   | :warning:　　　　　 |
+| P0001   | :warning:　Prelease|
 
